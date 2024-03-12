@@ -1,0 +1,220 @@
+{% load static %}
+{% include 'admin/header.html' %}
+		<div id="content">
+			<div id="content-header">
+				<div id="breadcrumb">
+				<a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+				</div>
+                <h1>Add Mentor</h1>
+			</div>
+			
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-info-sign"></i>									
+								</span>
+								<h5>Add Mentor</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form class="form-horizontal" method="POST" action="addmentor" enctype="multipart/form-data">
+                                   						<h4 style="color:red;">{{status}}</h4>
+
+{% csrf_token %}								   <div class="control-group">
+                                        <label class="control-label">Your Name</label>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" required name="name">
+                                        </div>
+                                    </div>
+									 <div class="control-group">
+                                        <label class="control-label">Image</label>
+                                        <div class="controls">
+                                            <input type="file" class="form-control" required name="image" >
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Department</label>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" required name="dept" >
+                                            
+                                        </div>
+                                    </div>
+									<div class="control-group">
+                                        <label class="control-label">Email</label>
+                                        <div class="controls">
+                                            <input type="email" class="form-control" required name="email">
+                                            
+                                        </div>
+                                    </div>
+									<div class="control-group">
+                                        <label class="control-label">Address</label>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" required name="address" >
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Phone Number</label>
+                                        <div class="controls">
+                                            <input type="number" pattern="[0-9]{10}" title='Enter 10 digits'  class="form-control" required name="phone" >
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Username</label>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" required name="username">
+                                        </div>
+                                    </div>
+                                   
+								    <div class="control-group">
+                                        <label class="control-label">Password</label>
+                                        <div class="controls">
+                                            <input type="password" class="form-control" required name="password" >
+                                        </div>
+                                    </div>
+									 <div class="control-group">
+                                        <label class="control-label">Type</label>
+                                        <div class="controls">
+										<select class="form-control" class="form-control" required name="type">
+										<option disabled>Select</option>
+										<option value='Internal'>Internal</option>
+										<option value='External'>External</option>
+										</select>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-actions">
+                                        <input type="submit" value="Submit" class="btn btn-success">
+                                    </div>
+                                </form>
+							</div>
+						</div>			
+					</div>
+				</div>
+				
+				
+			</div>
+		</div> <div class="row-fluid">
+		
+		
+		<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+	</div>
+    <h1>View Internal Mentors</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+             <span class="icon"><i class="icon-th"></i></span> 
+            <h5>Mentors </h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Department</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for i in res %}
+                <tr class="gradeX">
+                  <td><img src="../../media/{{i.image}}" style='width:100px; height:100px;'></td>
+                  <td>{{i.name}}</td>
+                  <td>{{i.email}}</td>
+                  <td>{{i.phone}}</td>
+                  <td class="center">{{i.dept}}</td>
+                  <td>{{i.address}}</td>
+
+                </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+       
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+		
+		<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+	</div>
+    <h1>View External Mentors</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+             <span class="icon"><i class="icon-th"></i></span> 
+            <h5>Mentors </h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Department</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for i in res1 %}
+                <tr class="gradeX">
+                  <td><img src="../../media/{{i.image}}" style='width:100px; height:100px;'></td>
+                  <td>{{i.name}}</td>
+                  <td>{{i.email}}</td>
+                  <td>{{i.phone}}</td>
+                  <td class="center">{{i.dept}}</td>
+                  <td>{{i.address}}</td>
+
+                </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+       
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+     {% include 'admin/footer.html' %}

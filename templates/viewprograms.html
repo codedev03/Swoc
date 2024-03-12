@@ -1,0 +1,67 @@
+
+{% load static %}
+{% include 'header.html' %}
+<style>
+	th{
+		width: 60px;
+	}
+	td{
+		width: 90px;
+	}
+</style>
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>View Programs/Interviews</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+	
+	<!-- end section -->
+   
+	<!-- section -->
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+				    <table class="table table-bordered">
+					<tr>
+					
+					<th>Program/Interview Name</th>
+					<th>Description</th>
+					<th>Program Type</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Online Link/Venue</th>
+					
+					
+					</tr>
+					{% for i in result %}
+					
+						<tr>
+					
+					<td>{{i.name}}</td>
+					<td>{{i.description}}</td>
+					<td>{{i.pgtype}}</td>
+					<td>{{i.date}}</td>
+					<td>{{i.time}}</td>
+					<td><a href="https://{{i.link}}" target="_blank">{{i.link}}</a></td>
+					
+					
+					</tr>
+					{% endfor %}
+					</table>
+					
+					
+					
+					
+                 </div>
+				
+               </div>			  
+           </div>
+        </div>
+	<!-- end section -->
+{% include 'footer.html' %}

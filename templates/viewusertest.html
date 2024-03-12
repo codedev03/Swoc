@@ -1,0 +1,88 @@
+
+{% load static %}
+{% include 'header.html' %}
+<style>
+	th{
+		width: 80px;
+	}
+	td{
+		width: 90px;
+	}
+</style>
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>View Tests</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+	
+	<!-- end section -->
+   
+	<!-- section -->
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+				    <table class="table table-bordered">
+					<tr>
+					
+					<th>Test Name</th>
+					<th>Test Date & Time</th>
+					<th>Test Type</th>
+					<th>Link / Venue</th>
+					<th>Status</th>
+					<th>Result(%/cgpa)</th>
+					<th>Update Status</th>
+					
+					
+					
+					</tr>
+					{% for i in result %}
+					
+						<tr>
+					
+					<td>{{i.name}}</td>
+					<td>{{i.date}}</td>
+					<td>{{i.typee}}</td>
+					{% if i.typee == 'Online' %}
+					<td><a href="{{i.link}}" style="color: blue;" target="_blank">{{i.link}}</a></td>
+                    {% else %}
+                    <td>{{i.link}}</td>
+                    {% endif %}
+					<td>{{i.status}}</td>
+
+             
+                    {% if i.status == 'completed' and i.result == 'pending' %}
+                        <td style="color: orange;">Will be updated soon</td>
+                    {% else %}
+                        <td style="color: green;">{{ i.result }}</td>
+                    {% endif %}
+  
+
+
+
+
+                    {% if i.status == 'pending' %}
+                    <td><a href="testcmplt/{{i.id}}" class="btn btn-success">Completed</a></td>
+                    {% else %}
+                    <td style="color: green;">Updated</td>
+                    {% endif %}
+					
+					</tr>
+					{% endfor %}
+					</table>
+					
+					
+					
+					
+                 </div>
+				
+               </div>			  
+           </div>
+        </div>
+	<!-- end section -->
+{% include 'footer.html' %}

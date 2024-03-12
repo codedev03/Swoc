@@ -1,0 +1,49 @@
+
+{% load static %}
+{% include 'header.html' %}
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>View Attendence </h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+	
+	<!-- end section -->
+   
+	<!-- section -->
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+                 <div class="col-lg-12 col-md-8 col-sm-12">
+				    <table class="table table-bordered">
+					<tr>
+					
+					<th>Date </th>
+					<th>status</th>
+				
+					
+					</tr>
+					
+					{% for i in result %}
+					<tr>
+						<td>{{i.Date}}</td>
+						<td>{{i.status}}</td>
+					</tr>
+					{% endfor %}
+					</table>
+					
+					
+					
+					
+                 </div>
+				
+               </div>			  
+           </div>
+        </div>
+	<!-- end section -->
+{% include 'footer.html' %}

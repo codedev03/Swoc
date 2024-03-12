@@ -1,0 +1,51 @@
+{% load static %}
+
+{% include 'admin/header.html' %}
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+	</div>
+    <h1>Students Messages</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+             <span class="icon"><i class="icon-th"></i></span> 
+            <h5> </h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Name </th>
+               
+                  <th>Chat</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for i in result %}
+                <tr class="gradeX">
+                  <td>{{i.name}}</td>
+                
+				  <td><a href="chatmentor/{{i.sid}}">View Messages</a> 
+          
+          
+          </td>
+
+                </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+       
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'admin/footer.html' %}

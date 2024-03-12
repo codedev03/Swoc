@@ -1,0 +1,62 @@
+{% load static %}
+
+{% include 'admin/header1.html' %}
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="../dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+	</div>
+    <h1>View Servery Details</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+             <span class="icon"><i class="icon-th"></i></span> 
+            <h5> </h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Name </th>
+                  <th>Department</th>
+                  <th>Semester</th>
+                  <th>Strength</th>
+                  <th>Weakness</th>
+                  <th>Opportunities</th>
+                  <th>Description</th>
+                  <th>Approve</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for i in result %}
+                <tr class="gradeX">
+                  <td>{{res}}</td>
+                  <td class="center">{{i.dept}}</td>
+				  <td>{{i.sem}}</td>
+				  <td>{{i.strength}}</td>
+				  <td>{{i.weakness}}</td>
+				  <td>{{i.opportunities}}</td>
+				  <td>{{i.description}}</td>
+          {% if i.status == 'pending' %}
+				  <td><a href="{% url 'approvesur' id=i.id %}" class="btn btn-success">Approve</a></td>
+          {% else %}
+          <td style="color: green;">Approved</td>
+          {% endif %}
+
+                </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+       
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'admin/footer.html' %}

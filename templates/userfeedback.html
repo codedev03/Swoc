@@ -1,0 +1,48 @@
+
+{% load static %}
+{% include 'header.html' %}
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>Feedback</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+	
+	<!-- end section -->
+   
+	<!-- section -->
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+                 <div class="col-lg-8 col-md-8 col-sm-12">
+				    <div class="full float-right_img">
+                        <img style="height: 400px; width: 500px;" src="{% static 'images/p3.png' %}" alt="#">
+                    </div>
+                 </div>
+				 <div class="col-lg-4 col-md-4 col-sm-12">
+				    <div class="contact_form">
+					    <form action="adduserfeedback" method="POST">
+						{% csrf_token %}
+						<h4 style="color:red;">{{status}}</h4>
+						   <fieldset>
+						       
+							   <div class="full field">
+							      <textarea placeholder="Feedback" required name="feedback"></textarea>
+							   </div>
+							   <div class="full field">
+							      <div class="center"><button>Feedback</button></div>
+							   </div>
+						   </fieldset>
+						</form>
+					</div>
+                 </div>
+               </div>			  
+           </div>
+        </div>
+	<!-- end section -->
+{% include 'footer.html' %}

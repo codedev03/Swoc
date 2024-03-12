@@ -1,0 +1,87 @@
+{% load static %}
+
+{% include 'admin/header.html' %}
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+	</div>
+    <h1>View Students Tests</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+             <span class="icon"><i class="icon-th"></i></span> 
+            <h5>Students Test Results </h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered">
+                <tr>
+                
+                <th>Student Name</th>
+                <th>Test Name</th>
+                <th>Test Date & Time</th>
+                <th>Test Type</th>
+                <th>Link / Venue</th>
+                <th> Test Status</th>
+                <th>Result ( % / cgpa )</th>
+                <th>Add Result</th>
+                
+                
+                
+                </tr>
+                {% for i in result %}
+                
+                    <tr>
+                
+                <td>{{i.stud_id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.typee}}</td>
+                
+                {% if i.typee == 'Online' %}
+					<td><a href="{{i.link}}" style="color: blue;" target="_blank">{{i.link}}</a></td>
+                    {% else %}
+                    <td>{{i.link}}</td>
+                    {% endif %}
+                <td>{{i.status}}</td>
+
+                {% if i.result == 'pending' %}
+                <td style="color: red;"> Update Result</td>
+                {% else %}
+                <td style="color: green;">{{i.result}}</td>
+                {% endif %}
+
+
+
+
+
+                {% if i.status == 'pending' %}
+                <td style="color: rgb(112, 0, 0);">Test Not Completed</td>
+                {% elif i.result == 'pending' and i.status == 'completed' %}
+                <td>
+                <form action="addresultss/{{i.id}}" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Result ( % / cgpa )" name="result">
+                    <input type="submit" name="" id="">
+                </form>
+                </td>
+                {% else %}
+                <td style="color: green;">Added</td>
+                {% endif %}
+                
+                </tr>
+                {% endfor %}
+                </table>
+          </div>
+        </div>
+       
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'admin/footer.html' %}

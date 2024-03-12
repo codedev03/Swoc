@@ -1,0 +1,53 @@
+{% load static %}
+
+{% include 'admin/header.html' %}
+<!--close-top-Header-menu-->
+
+{% if status %}
+<script>
+  alert('{{status}}');
+</script>
+{% endif %}
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="dash" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+  <div class="container">
+   	<div class="quick-actions_homepage">
+    <ul class="quick-actions">
+	
+	{% if request.session.mid %}
+	  <li> <a href="http://127.0.0.1:8000/viewmentorstudents"> <i class="icon-people"></i>View Students </a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewstudservey"> <i class="icon-survey"></i>View Survey</a> </li>
+          <li> <a href="http://127.0.0.1:8000/mentorfeedb"> <i class="icon-book"></i> Feedback </a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewwcompl"> <i class="icon-download"></i> Complaint </a> </li>
+          <li> <a href="http://127.0.0.1:8000/addskill"> <i class="icon-piechart"></i>Add Skills </a> </li>
+          <li> <a href="http://127.0.0.1:8000/pprogram"> <i class="icon-calendar"></i>Add Programs/Interviews </a> </li>
+          <li> <a href="http://127.0.0.1:8000/addtest"> <i class="icon-pdf"></i>Add Test </a> </li>
+          <li> <a href="http://127.0.0.1:8000/addtestresult"> <i class="icon-pdf"></i>Add Test Result</a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewchat"> <i class="icon-cabinet"></i>Messages</a> </li>
+          <li> <a href="http://127.0.0.1:8000/mentattendence"> <i class="icon-people"></i> Attendence </a> </li>
+	
+	    {% else %}
+          <li> <a href="http://127.0.0.1:8000/viewstudents"> <i class="icon-people"></i>View Students </a> </li>
+          <li> <a href="http://127.0.0.1:8000/mentor"> <i class="icon-people"></i>Mentors</a> </li>
+          <li> <a href="http://127.0.0.1:8000/assign"> <i class="icon-people"></i>  Assign Students </a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewadminskill"> <i class="icon-piechart"></i>View Skill</a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewadmincomplaint"> <i class="icon-download"></i>  Complaints </a> </li>
+          <li> <a href="http://127.0.0.1:8000/Viewadminservey"> <i class="icon-survey"></i>  Survey Details </a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewadminprogram"> <i class="icon-calendar"></i>  View Programs/Interviews </a> </li>
+          <li> <a href="http://127.0.0.1:8000/viewtestresadmin"> <i class="icon-survey"></i>  View Test Results </a> </li>
+
+          	{% endif %}
+
+        </ul>
+   </div>
+   
+
+
+
+  </div>
+</div>
+</div>
+</div>
+{% include 'admin/footer.html' %}
